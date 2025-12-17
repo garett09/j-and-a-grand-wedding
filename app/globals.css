@@ -6,86 +6,41 @@
    TAN FONT FAMILY - OFFICIAL WEDDING FONTS
    ============================================
    
-   To use these fonts:
-   1. Obtain licensed TAN font files (WOFF2 format preferred)
-   2. Place font files in /public/fonts/ directory
-   3. Uncomment the @font-face declarations below
-   4. Update file paths in url() to match your font file names
-   
    Font Usage:
-   - TAN Aegan: Display/headings (currently mapped to font-display)
-   - TAN Mon Cheri: Script/romantic text (currently mapped to font-script)
-   - TAN Pearl: Decorative elements (currently mapped to font-decorative)
-   - TAN Parfait: Body text (currently mapped to font-serif)
+   - TAN Aegan: Display/headings (mapped to font-display)
+   - TAN Mon Cheri: Script/romantic text (mapped to font-script)
+   - TAN Pearl: Decorative elements (mapped to font-decorative)
+   - Body text: Uses Cormorant Garamond (TAN Parfait not available)
    
-   Until font files are added, fallback fonts are used (Bodoni Moda, Cormorant Garamond)
+   Fallback fonts: Bodoni Moda, Cormorant Garamond, Josefin Sans
    ============================================ */
 
 /* TAN Aegan - Elegant serif for display headings */
-/* Uncomment when font files are available:
 @font-face {
   font-family: "TAN Aegan";
-  src: url("/fonts/TAN-Aegan.woff2") format("woff2"),
-       url("/fonts/TAN-Aegan.woff") format("woff");
+  src: url("/fonts/TAN-Aegan.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
-
-@font-face {
-  font-family: "TAN Aegan";
-  src: url("/fonts/TAN-Aegan-Italic.woff2") format("woff2"),
-       url("/fonts/TAN-Aegan-Italic.woff") format("woff");
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
-*/
 
 /* TAN Mon Cheri - Script font for romantic phrases */
-/* Uncomment when font files are available:
 @font-face {
   font-family: "TAN Mon Cheri";
-  src: url("/fonts/TAN-MonCheri.woff2") format("woff2"),
-       url("/fonts/TAN-MonCheri.woff") format("woff");
+  src: url("/fonts/TAN-MonCheri.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
-*/
 
 /* TAN Pearl - Playful elegant serif */
-/* Uncomment when font files are available:
 @font-face {
   font-family: "TAN Pearl";
-  src: url("/fonts/TAN-Pearl.woff2") format("woff2"),
-       url("/fonts/TAN-Pearl.woff") format("woff");
+  src: url("/fonts/TAN-Pearl.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
-*/
-
-/* TAN Parfait - Serif for body text */
-/* Uncomment when font files are available:
-@font-face {
-  font-family: "TAN Parfait";
-  src: url("/fonts/TAN-Parfait.woff2") format("woff2"),
-       url("/fonts/TAN-Parfait.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "TAN Parfait";
-  src: url("/fonts/TAN-Parfait-Italic.woff2") format("woff2"),
-       url("/fonts/TAN-Parfait-Italic.woff") format("woff");
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
-*/
 
 :root {
   --background: #faf9f7;
@@ -160,11 +115,11 @@
 
 @theme inline {
   --font-sans: var(--font-josefin), "Josefin Sans", sans-serif;
-  /* TAN fonts with fallbacks - uncomment TAN fonts in @font-face when font files are added */
+  /* TAN fonts with fallbacks - TAN Parfait not available, using Cormorant Garamond for body */
   --font-display: "TAN Aegan", var(--font-bodoni), "Bodoni Moda", "Didot", serif;
   --font-script: "TAN Mon Cheri", var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
   --font-decorative: "TAN Pearl", var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
-  --font-serif: "TAN Parfait", var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --font-serif: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
   
   /* Font utility classes */
   --font-family-script: var(--font-script);
