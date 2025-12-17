@@ -1,3 +1,5 @@
+import { ScrollAnimation, ScrollStagger } from "@/components/scroll-animation"
+
 export function ScheduleOfEvents() {
   const events = [
     {
@@ -29,35 +31,39 @@ export function ScheduleOfEvents() {
       <div
         className="absolute inset-0 opacity-[0.15] bg-center bg-no-repeat bg-cover"
         style={{
-          backgroundImage: `url('/images/image.png')`,
+          backgroundImage: `url('/elegant-european-villa-line-drawing-sketch-archite.jpg')`,
         }}
       />
 
       <div className="relative z-10 w-full px-6 sm:px-8 md:px-16 py-16 md:py-24">
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 xl:gap-24 max-w-7xl mx-auto">
           {/* Left - Title */}
-          <div className="w-full lg:w-2/5">
-            <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-wide text-[#1a1a1a] leading-[1.05]">
+          <ScrollAnimation preset="fadeRight" className="w-full lg:w-2/5">
+            <h2 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-wide text-[#1a1a1a] leading-[1.05]">
               <span className="block">SCHEDULE</span>
               <span className="block">OF EVENTS</span>
             </h2>
-            <p className="mt-4 md:mt-6 font-serif text-lg sm:text-xl md:text-2xl tracking-[0.1em] text-[#1a1a1a]">
+            <p className="mt-4 md:mt-6 font-display text-lg sm:text-xl md:text-2xl tracking-[0.1em] text-[#1a1a1a]">
               MARCH 21, 2026
             </p>
-          </div>
+          </ScrollAnimation>
 
           {/* Right - Timeline */}
-          <div className="w-full lg:w-3/5 space-y-8 md:space-y-10">
+          <ScrollStagger
+            preset="fadeUp"
+            className="w-full lg:w-3/5 space-y-8 md:space-y-10"
+            staggerChildren={0.12}
+          >
             {events.map((event, index) => (
               <div key={index}>
-                <p className="font-serif text-xs sm:text-sm tracking-[0.15em] text-[#666] mb-1">{event.time}</p>
+                <p className="font-display text-xs sm:text-sm tracking-[0.15em] text-[#666] mb-1">{event.time}</p>
                 <h3 className="font-serif text-2xl sm:text-3xl md:text-4xl text-[#1a1a1a] mb-2">{event.title}</h3>
                 <p className="font-serif text-sm sm:text-base md:text-lg text-[#555] leading-relaxed max-w-xl">
                   {event.description}
                 </p>
               </div>
             ))}
-          </div>
+          </ScrollStagger>
         </div>
       </div>
     </section>
