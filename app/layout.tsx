@@ -1,19 +1,29 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Cormorant_Garamond, Josefin_Sans } from "next/font/google"
-import { Analytics } from "@vercel/analytics/next"
+import { Bodoni_Moda, Cormorant_Garamond, Josefin_Sans } from "next/font/google"
 import "./globals.css"
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-serif",
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-cormorant",
 })
 
 const josefin = Josefin_Sans({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400"],
-  variable: "--font-sans",
+  display: "swap",
+  variable: "--font-josefin",
+})
+
+const bodoni = Bodoni_Moda({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-bodoni",
 })
 
 export const metadata: Metadata = {
@@ -30,9 +40,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${cormorant.variable} ${josefin.variable} font-serif antialiased`}>
+      <body className={`${cormorant.variable} ${bodoni.variable} ${josefin.variable} font-serif antialiased`}>
         {children}
-        <Analytics />
       </body>
     </html>
   )

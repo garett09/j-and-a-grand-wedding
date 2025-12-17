@@ -1,7 +1,91 @@
 @import "tailwindcss";
-@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
+
+/* ============================================
+   TAN FONT FAMILY - OFFICIAL WEDDING FONTS
+   ============================================
+   
+   To use these fonts:
+   1. Obtain licensed TAN font files (WOFF2 format preferred)
+   2. Place font files in /public/fonts/ directory
+   3. Uncomment the @font-face declarations below
+   4. Update file paths in url() to match your font file names
+   
+   Font Usage:
+   - TAN Aegan: Display/headings (currently mapped to font-display)
+   - TAN Mon Cheri: Script/romantic text (currently mapped to font-script)
+   - TAN Pearl: Decorative elements (currently mapped to font-decorative)
+   - TAN Parfait: Body text (currently mapped to font-serif)
+   
+   Until font files are added, fallback fonts are used (Bodoni Moda, Cormorant Garamond)
+   ============================================ */
+
+/* TAN Aegan - Elegant serif for display headings */
+/* Uncomment when font files are available:
+@font-face {
+  font-family: "TAN Aegan";
+  src: url("/fonts/TAN-Aegan.woff2") format("woff2"),
+       url("/fonts/TAN-Aegan.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "TAN Aegan";
+  src: url("/fonts/TAN-Aegan-Italic.woff2") format("woff2"),
+       url("/fonts/TAN-Aegan-Italic.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+*/
+
+/* TAN Mon Cheri - Script font for romantic phrases */
+/* Uncomment when font files are available:
+@font-face {
+  font-family: "TAN Mon Cheri";
+  src: url("/fonts/TAN-MonCheri.woff2") format("woff2"),
+       url("/fonts/TAN-MonCheri.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+*/
+
+/* TAN Pearl - Playful elegant serif */
+/* Uncomment when font files are available:
+@font-face {
+  font-family: "TAN Pearl";
+  src: url("/fonts/TAN-Pearl.woff2") format("woff2"),
+       url("/fonts/TAN-Pearl.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+*/
+
+/* TAN Parfait - Serif for body text */
+/* Uncomment when font files are available:
+@font-face {
+  font-family: "TAN Parfait";
+  src: url("/fonts/TAN-Parfait.woff2") format("woff2"),
+       url("/fonts/TAN-Parfait.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "TAN Parfait";
+  src: url("/fonts/TAN-Parfait-Italic.woff2") format("woff2"),
+       url("/fonts/TAN-Parfait-Italic.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+*/
 
 :root {
   --background: #faf9f7;
@@ -76,7 +160,14 @@
 
 @theme inline {
   --font-sans: var(--font-josefin), "Josefin Sans", sans-serif;
-  --font-serif: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  /* TAN fonts with fallbacks - uncomment TAN fonts in @font-face when font files are added */
+  --font-display: "TAN Aegan", var(--font-bodoni), "Bodoni Moda", "Didot", serif;
+  --font-script: "TAN Mon Cheri", var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --font-decorative: "TAN Pearl", var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --font-serif: "TAN Parfait", var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  
+  /* Font utility classes */
+  --font-family-script: var(--font-script);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -117,10 +208,12 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    border-color: var(--color-border);
+    outline-color: color-mix(in srgb, var(--color-ring) 50%, transparent);
   }
   body {
-    @apply bg-background text-foreground;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
   }
 }
 
@@ -145,4 +238,39 @@
 /* Smooth scroll */
 html {
   scroll-behavior: smooth;
+}
+
+/* B&W filter for images matching PDF design */
+.grayscale-bw {
+  filter: grayscale(100%) contrast(1.1);
+}
+
+/* Script font utility for TAN Mon Cheri (romantic phrases) */
+.font-script {
+  font-family: var(--font-script);
+}
+
+/* Subtle hover/tap utilities (mobile-first) */
+.hover-raise {
+  transition: transform 300ms ease, box-shadow 300ms ease;
+  will-change: transform;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hover-raise:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  }
+}
+
+.hover-raise:active {
+  transform: translateY(0);
+}
+
+.focus-ring {
+  outline: none;
+}
+
+.focus-ring:focus-visible {
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
 }
